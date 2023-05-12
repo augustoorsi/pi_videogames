@@ -1,4 +1,4 @@
-const { Videogame, Genre } = require("../../../db")
+const { videogame, genre } = require("../../../db")
 const URL = `https://api.rawg.io/api/games`
 const { API_KEY } = process.env
 const axios = require("axios")
@@ -14,7 +14,6 @@ const getApiVideogames = async (id) => {
             image: results.background_image,
             genres: results.genres.map(genre => genre.name)
         }
-        console.log(videogame);
         return videogame
     }
     else{
@@ -41,25 +40,24 @@ const getApiVideogames = async (id) => {
 
 const getDbVideogames = async (id) => {
     if(id){
-        const dbVideogame = await Videogame.findAll({
+        const dbVideogame = await videogame.findAll({
             where: {id: id},
             attributes: ['id', 'name', 'image'],
             include: {
-                model: Genre,
+                model: genre,
                 attributes: ['name'],
                 through: {
                     attributes: []
                 },
             }
         })
-        console.log(dbVideogame[0].dataValues);
         return dbVideogame[0].dataValues
     }
     else{
-        const dbVideogames = await Videogame.findAll({
+        const dbVideogames = await videogame.findAll({
             attributes: ['id', 'name', 'image'],
             include: {
-                model: Genre,
+                model: genre,
                 attributes: ['name'],
                 through: {
                     attributes: []
@@ -67,7 +65,6 @@ const getDbVideogames = async (id) => {
             }
         })
         const videogames = await dbVideogames.map(dbvideogame => dbvideogame.dataValues)
-        console.log(videogames);
         return videogames
     }
 }
@@ -93,9 +90,6 @@ const getVideogameByID = async (id) =>{
     return await getDbVideogames(id)
 }
 
-
-
-getVideogameByID("25ba4023-8c14-4cd9-8263-759b1a3f8d5b")
 
 
 

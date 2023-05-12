@@ -11,11 +11,11 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
 VideogameModel(sequelize);
 GenreModel(sequelize);
 
-const { Videogame, Genre } = sequelize.models
+const { videogame, genre } = sequelize.models
 
 const Videogame_Genres = sequelize.define('Videogame_Genres', {}, { timestamps: false });
-Videogame.belongsToMany(Genre, { through: Videogame_Genres });
-Genre.belongsToMany(Videogame, { through: Videogame_Genres });
+videogame.belongsToMany(genre, { through: Videogame_Genres });
+genre.belongsToMany(videogame, { through: Videogame_Genres });
 
 
 

@@ -4,6 +4,7 @@ const { SERVER_PORT } = process.env
 const { sequelize } = require("./src/db")
 const { getAllGenres } = require("./src/routes/genresRouter/controller/genresController")
 
+
 server.listen(SERVER_PORT, () => {
   sequelize.sync({ force: false });
   getAllGenres()
