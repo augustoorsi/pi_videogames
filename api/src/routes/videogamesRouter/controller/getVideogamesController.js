@@ -12,7 +12,11 @@ const getApiVideogames = async (id) => {
             id: results.id,
             name: results.name,
             image: results.background_image,
-            genres: results.genres.map(genre => genre.name)
+            platforms: results.platforms,
+            description: results.description,
+            released: results.released,
+            rating: results.rating,
+            genres: results.genres.map(genre => genre.name),
         }
         return videogame
     }
@@ -27,7 +31,8 @@ const getApiVideogames = async (id) => {
                     id: videogame.id,
                     name: videogame.name,
                     image: videogame.background_image,
-                    genres: videogame.genres.map(genre => genre.name)
+                    genres: videogame.genres.map(genre => genre.name),
+                    rating: videogame.rating
                 }
             })
             apiVideogames.push(...videogames);
@@ -42,7 +47,7 @@ const getDbVideogames = async (id) => {
     if(id){
         const dbVideogame = await videogame.findAll({
             where: {id: id},
-            attributes: ['id', 'name', 'image'],
+            attributes: ['id', 'name', 'image', 'created_db', 'rating','released', 'description','platforms'],
             include: {
                 model: genre,
                 attributes: ['name'],
@@ -55,7 +60,7 @@ const getDbVideogames = async (id) => {
     }
     else{
         const dbVideogames = await videogame.findAll({
-            attributes: ['id', 'name', 'image'],
+            attributes: ['id', 'name', 'image', 'created_db', 'rating','released'],
             include: {
                 model: genre,
                 attributes: ['name'],
@@ -64,7 +69,9 @@ const getDbVideogames = async (id) => {
                 },
             }
         })
-        const videogames = await dbVideogames.map(dbvideogame => dbvideogame.dataValues)
+        let videogames = await dbVideogames.map(dbvideogame => dbvideogame.dataValues)
+        videogames.genres = videogames.map(videogame=> videogame.genres.map(genre=> genre.dataValues.name)).flat()
+        console.log(videogames);
         return videogames
     }
 }
@@ -74,7 +81,6 @@ const getAllVideogames = async () => {
     const dbVideogames = await getDbVideogames()
     const apiVideogames = await getApiVideogames()
     const allVideogames = [...dbVideogames, ...apiVideogames]
-    console.log(allVideogames.length);
     return allVideogames
 }
 

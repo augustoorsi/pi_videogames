@@ -1,25 +1,22 @@
-.container{
-    display:flex;
+.container {
+    display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url(C:\Users\augus\Desktop\pi_videogames\videogame.png);
-}
+  }
 
-.button{
+.item{
     display: inline-block;
+    margin: auto;
     background-color: #eee;
     cursor: pointer;
-    height: 75px;
-    width: 150px
 }
 
-.button:hover {
+
+.item:hover {
     /* Estilo al pasar el cursor por encima */
     background-color: #ccc;
 }
 
-.button:active {
+.item:active {
     /* Estilo mientras se mantiene presionado el clic */
     background-color: #aaa;
 }

@@ -22,10 +22,10 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     image: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
       allowNull: true
     },
-    release_date: {
+    released: {
       type: DataTypes.DATE,
       allowNull: false
     },
@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
       allowNull: true,
       defaultValue: 0.00,
       validate: {
-        min: 0.00,
+        min: 0.01,
         max: 5.00,
       }
     },
