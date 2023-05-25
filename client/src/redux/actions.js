@@ -9,6 +9,7 @@ export const ORDER = "ORDER"
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME"
 export const POST_VIDEOGAME = "POST_VIDEOGAME"
 export const DELETE_VIDEOGAME= "DELETE_VIDEOGAME"
+export const EDIT_VIDEOGAME = "EDIT_VIDEOGAME"
 
 
 export const getAllVideogames =  ()=>{
@@ -59,5 +60,11 @@ export const deleteVideogame = (id)=>{
         await axios.delete(`http://localhost:3001/videogames/${id}`)
         dispatch({type: DELETE_VIDEOGAME, payload:id })
     }
+}
 
+export const editVideogame = (id,videogameEdited)=>{
+    return async function(dispatch){
+        await axios.put(`http://localhost:3001/videogames/${id}`,videogameEdited)
+        dispatch({type:EDIT_VIDEOGAME, payload:videogameEdited})
+    }
 }

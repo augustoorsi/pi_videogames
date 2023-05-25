@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    flex-direction:inherit;
+    align-items: flex-start;
+}
+
+
+
+.img{
+    width: 400px;
+	height: 400px;
+    align-items:flex-end;
+    display: inline-block;
+    border-radius: 99px;
+    border: 10px solid black ;
+}

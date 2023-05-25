@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllVideogames, postVideogame } from "../../redux/actions";
 import validate from "./validate";
@@ -32,14 +32,31 @@ const Form = () => {
     }
     const handleGenres = (event) =>{
         const value = event.target.value
-        setCreateVideogame({...createVideogame, genres:[...createVideogame.genres, value]})
-        setErrors(validate({...createVideogame, genres:[...createVideogame.genres, value]},videogames))
+        if (!createVideogame.genres.includes(value) && value !==""){
+            setCreateVideogame({...createVideogame, genres:[...createVideogame.genres, value]})
+            setErrors(validate({...createVideogame, genres:[...createVideogame.genres, value]},videogames))
+        }
     }
 
     const handlePlatforms = (event) =>{
         const value = event.target.value
-        setCreateVideogame({...createVideogame, platforms:[...createVideogame.platforms, value]})
-        setErrors(validate({...createVideogame, platforms:[...createVideogame.platforms, value]},videogames))
+        if(!createVideogame.platforms.includes(value) && value !== ""){
+            setCreateVideogame({...createVideogame, platforms:[...createVideogame.platforms, value]})
+            setErrors(validate({...createVideogame, platforms:[...createVideogame.platforms, value]},videogames))
+        }
+    }
+
+    const handleDeletePlatform = (event)=>{
+        const value = event.target.innerText
+        console.log(createVideogame.platforms.filter(platform=> platform !== value));
+        setCreateVideogame({...createVideogame, platforms:[...createVideogame.platforms.filter(platform=> platform !== value)]})
+    }
+
+    const handleDeleteGenre = (event)=>{
+        const value = event.target.innerText
+        console.log(value);
+        console.log(createVideogame.genres.filter(genre=> genre !== value));
+        setCreateVideogame({...createVideogame, genres:[...createVideogame.genres.filter(genre=> genre !== value)]})
     }
 
     const handleSubmit = (event)=>{
@@ -86,9 +103,9 @@ const Form = () => {
                 PLATFORMS:
                 <select onChange={(event)=>handlePlatforms(event)} name="platforms">
                     <option></option>
-                    {platformsArray.map(platform => <option key={platform} name={platform}> {platform}</option>)}
+                    {platformsArray.map(platform => <option  key={platform} name={platform}> {platform}</option>)}
                 </select>
-                {createVideogame.platforms.map(platform=><p key={platform}>{`[${platform}]`}</p>)}
+                {createVideogame.platforms.map(platform=><p onClick={(event)=>handleDeletePlatform(event)} data={platform} key={platform}>{platform}</p>)}
             </label>
             {errors.platforms && <spam>{errors.platforms}</spam>}
             <br />
@@ -112,7 +129,7 @@ const Form = () => {
                 </select>
             </label>
             {errors.genres && <spam>{errors.genres}</spam>}
-            {createVideogame.genres.map(genre=><p key={genre}>{`[${genre}]`}</p>)}
+            {createVideogame.genres.map(genre=><p onClick={(event)=>handleDeleteGenre(event)} data={genre} key={genre}>{genre}</p>)}
             <br />
             <label name="SUBMIT">
                 <button>ADD VIDEOGAME</button>

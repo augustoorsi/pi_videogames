@@ -1,9 +1,14 @@
-const { videogame } = require("../../../db")
+const { videogame,genre } = require("../../../db")
 
 
 const putVideogame = async (id, update) => {
-    const response = await videogame.update(update, { where: { id: id } })
-    return response
+    console.log(update);
+    await videogame.update(update, { where: { id: id } })
+    const videogameEdited = await videogame.findByPk(id)
+    await videogameEdited.setGenres([])
+    let dbGenres = await genre.findAll({where:{name: update.genres}})
+    await videogameEdited.addGenres(dbGenres)
+    return videogameEdited
 }
 
 

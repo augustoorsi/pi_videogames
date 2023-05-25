@@ -1,4 +1,5 @@
 import NavBar from "./components/NavBar/NavBar";
+import Edit from "./views/Edit/Edit";
 import { Landing, Home, Detail, Form } from "./views/index"
 import { Route, useLocation } from "react-router-dom";
 
@@ -10,7 +11,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div>
       {location.pathname !== "/"&& <NavBar/>}
 
       <Route exact path="/">
@@ -27,6 +28,10 @@ function App() {
 
       <Route path="/create">
         <Form />
+      </Route>
+
+      <Route path="/edit">
+        <Edit/>
       </Route>
     </div>
   );

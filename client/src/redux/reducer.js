@@ -1,4 +1,4 @@
-import { DELETE_VIDEOGAME, FILTER_BY_GENRE, FILTER_BY_ORIGIN, GET_ALL_GENRES, GET_ALL_VIDEOGAMES, ORDER, POST_VIDEOGAME, SEARCH_BY_NAME } from "./actions";
+import { DELETE_VIDEOGAME, EDIT_VIDEOGAME, FILTER_BY_GENRE, FILTER_BY_ORIGIN, GET_ALL_GENRES, GET_ALL_VIDEOGAMES, ORDER, POST_VIDEOGAME, SEARCH_BY_NAME } from "./actions";
 
 const initialState = {
     videogames: [],
@@ -28,7 +28,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
             }
 
         case FILTER_BY_GENRE:
-            const videogamesFiltered = (payload === "All")? state.allVideogames : state.allVideogames.filter(videogame => videogame.genres.includes(payload))
+            const videogamesFiltered = (payload === "All")? state.videogames : state.videogames.filter(videogame =>videogame.created_db? videogame.genres.some(genre=> genre.name === payload) : videogame.genres.includes(payload))
             return{
                 ...state,
                 videogames: [...videogamesFiltered]
@@ -58,6 +58,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 videogames: [...state.videogames.filter(videogame=> videogame.id !== payload)],
                 allVideogames: [...state.allVideogames.filter(videogame=> videogame.id !== payload)]
+            }
+
+        case EDIT_VIDEOGAME:
+            return{
+                ...state
             }
 
         default:

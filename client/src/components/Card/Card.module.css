@@ -1,7 +1,108 @@
-.img{
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 70px;
+    margin-right: 70px;
     width: 400px;
-	height: 400px;
-	object-fit: cover;
-    border-radius: 99px;
-    border: 10px solid black ;
+    height: 500px;
+    border: 5px solid #1f11e2;
+    background: linear-gradient(rgba(207, 91, 207, 0.5), rgba(31, 17, 226, 0.5));
+    border-radius: 30px;
+    position: relative;
+}
+
+.container:hover .img {
+    width: 350px;
+    height: 350px;
+    border-radius: 99999px;
+    border: 5px solid #1f11e27e;
+}
+
+.img {
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 30px;
+    border: 5px solid #1f11e27e;
+    transition: width 0.3s, height 0.3s;
+}
+
+.link {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1);
+}
+
+.link:active {
+    color: rgba(0, 0, 0, 1);
+}
+
+.name {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: rgba(207, 91, 207, 0.9);
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1px;
+    border: 5px solid #1f11e2;
+    border-radius: 30px;
+    background: linear-gradient(rgba(207, 91, 207, 0.5), rgba(31, 17, 226, 0.5));
+    font-family: Impact;
+    visibility: visible;
+    transition: top 0.3s;
+    padding: 5px;
+}
+
+.container:hover .name {
+    top: 10px;
+    transform: translate(-50%, 0%);
+    white-space: nowrap;
+    overflow:visible;
+    background: linear-gradient(rgb(207, 91, 207), rgb(31, 17, 226));
+}
+
+.genres {
+    color: rgba(207, 91, 207, 0.9);
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1px;
+    border: 5px solid #1f11e2;
+    border-radius: 30px;
+    background: linear-gradient(rgba(207, 91, 207, 0.5), rgba(31, 17, 226, 0.5));
+    font-family: Impact;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    width: 300px;
+    visibility: hidden;
+    transition: visibility 0.3s;
+}
+
+.container:hover .genres {
+    visibility: visible;
+}
+
+.button{
+    visibility: hidden;
+    position: absolute;
+}
+
+.container:hover .button{
+    height: 20px;
+    width: 20px;
+    visibility: visible;
+    margin-bottom:450px;
+    margin-left: -350px;
+    background-color: #1f11e200;
+    color: red;
 }

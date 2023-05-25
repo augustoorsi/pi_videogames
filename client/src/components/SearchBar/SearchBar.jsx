@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchByName } from "../../redux/actions";
+import style from "./SearchBar.module.css"
 
 
 const SearchBar = () => {
@@ -20,11 +21,11 @@ const SearchBar = () => {
     }
 
     return (
-        <div>
-            <label>
+        <div className={style.container}>
+            <label className={style.label}>
                 SEARCH VIDEOGAME:
-                <input type="text" value={name} onChange={(event) => handleOnChange(event)} placeholder="Ej: Counter-Strike..." />
-                <button type="submit" onClick={(event)=>handleOnClick(event) }>SEARCH</button>
+                <input className={style.input} type="text" value={name} onChange={(event) => handleOnChange(event)} placeholder="Ej: Counter-Strike..." />
+                <button className={style.button} type="submit" onClick={(event)=>handleOnClick(event) }>SEARCH</button>
             </label>
         </div>
     )

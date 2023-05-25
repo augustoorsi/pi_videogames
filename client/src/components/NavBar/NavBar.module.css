@@ -1,8 +1,32 @@
 .mainContainer{
+    font-size: 20px;
+    font-family: Impact;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: cadetblue;
-    border-radius: 15px;
+    flex-direction:row;
+    align-items:center;
+    justify-content: center;
+    background: linear-gradient(rgb(207, 91, 207), rgba(31, 17, 226, 0.603));
+    width: 100%;
+    height: 50px;
     border: 1px solid black;
+    border: 5px solid #1f11e2;
+    gap: 700px;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    border: 5px solid #1f11e2;;
+    border-radius: 10px;
+    text-decoration: none;
+    background: linear-gradient(rgba(207, 91, 207, 0.315), rgba(31, 17, 226, 0.267));
+    color: rgba(207, 91, 207, 0.9);
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 2px;
+    width: 100px;
+    height: 35px;
+}
+
+.link:hover {
+    background: linear-gradient(rgb(31, 17, 226),rgb(207, 91, 207));
 }

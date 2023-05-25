@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import style from "./Detail.module.css"
 import getDetail from "./getDetail";
@@ -21,6 +21,7 @@ const Detail =()=>{
     
     return(
         <div>
+            {videogame.created_db? <Link to={`/edit/${videogame.id}`}><button>EDIT</button></Link>:""}
             <h1>ID: {videogame?.id}</h1>
             <h1>NAME: {videogame?.name}</h1> 
             <img className={style.img} src={videogame?.image} alt={videogame.name}/>

@@ -1,9 +1,10 @@
 .container{
-    border: 5px solid black;
     display: flex;
     flex-direction: row;
-    border-radius:  10px;
     flex-wrap: wrap;
     gap: 100px;
-    
+    justify-content: center;
+    background-size: cover;
+    border: 10px solid black;
+    background-color: rgba(240, 248, 255, 0);
 }

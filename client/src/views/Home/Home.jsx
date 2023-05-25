@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { getAllGenres, getAllVideogames } from "../../redux/actions";
 import Filter from "../../components/Filter/Filter";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import style from "./Home.module.css"
 
 
 
@@ -31,12 +32,12 @@ const Home = ()=>{
 
 
     return(
-        <>
+        <div className={style.container}>
             <SearchBar/>
             <Filter paginated={paginated}/>
-            <Paginated paginated={paginated} videogamesPerPage={videogamesPerPage } videogames={videogames.length}/>
+            <Paginated currentPage={currentPage} paginated={paginated} videogamesPerPage={videogamesPerPage } videogames={videogames.length}/>
             <Cards currentVideogames={currentVideogames}/>
-        </>
+        </div>
     )
 }
 

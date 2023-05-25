@@ -1,25 +1,45 @@
-.container{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url(C:\Users\augus\Desktop\pi_videogames\videogame.png);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+.container {
+    width:1920px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image:
+        url('C:\Users\augus\Desktop\pi_videogames\imagenes\HOME.png');
+    background-size: cover;
+    }
 
-.button{
-    display: inline-block;
-    background-color: #eee;
-    cursor: pointer;
-    height: 75px;
-    width: 150px
+
+.button {
+    font-size: 26px;
+    font-family: Impact;
+    width: 130px;
+    height: 70px;
+    border-width: 2px;
+    color: rgba(207, 91, 207, 0.9);;
+    border-color: #1f11e2;
+    border-radius: 20px;
+    background: linear-gradient(rgba(207, 91, 207, 0.5),rgba(31, 17, 226, 0.5));
+    margin-bottom: 50px;
+    margin-left: 20px;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1px;
 }
 
 .button:hover {
-    /* Estilo al pasar el cursor por encima */
-    background-color: #ccc;
+    background: linear-gradient(rgba(207, 91, 207, 0.9),rgba(31, 17, 226, 0.9));
+    box-shadow: 0px 0px 100px 3px rgba(207, 91, 207, 0.9);
+    text-shadow: 1px 1px 30px rgba(207, 91, 207, 0.9);;
 }
 
+
+
 .button:active {
-    /* Estilo mientras se mantiene presionado el clic */
-    background-color: #aaa;
+    box-shadow: 0px 0px 100px 70px rgba(231, 119, 231, 0.514);
+    text-shadow: 1px 1px 50px rgba(207, 91, 207, 0.9);
 }

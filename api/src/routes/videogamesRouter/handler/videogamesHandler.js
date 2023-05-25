@@ -57,10 +57,10 @@ const deleteVideogamesHandler = async (req, res) => {
 const putVideogameHandler = async (req, res) => {
     let { id } = req.params
     id = "" + id
-    const { name, image, description, platforms, released, rating } = req.body
+    const { name, image, description, platforms, released, rating, genres } = req.body
     try {
-        const response = await putVideogame(id, { name, image, description, platforms, released, rating })
-        res.status(200).send(response)
+        const videogameEdited = await putVideogame(id, { name, image, description, platforms, released, rating, genres})
+        res.status(200).send(videogameEdited)
     } catch (error) {
         console.log({ error: error.message });
         res.status(400).json({ error: error.message })
